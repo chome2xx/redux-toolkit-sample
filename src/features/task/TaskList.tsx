@@ -1,26 +1,16 @@
 import React from "react";
 import { selectTask } from "./taskSlice";
 import { useSelector } from "react-redux";
+import Task from "./Task";
 
 const TaskList: React.FC = () => {
   const tasks = useSelector(selectTask);
 
   return (
     <div>
-      <table>
-        <th>
-          <td>ID</td>
-          <td>TITLE</td>
-          {tasks.map((task) => {
-            return (
-              <tr key={task.id}>
-                <td>{task.id}</td>
-                <td>{task.title}</td>
-              </tr>
-            );
-          })}
-        </th>
-      </table>
+      {tasks.map((task) => {
+        return <Task key={task.id} task={task} />;
+      })}
     </div>
   );
 };
